@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>ブログ</h1>
+{% for article in articles %}
+    {% if admin %}
+        pk: <a href="{% url 'blog:edit' article.pk %}">{{ article.pk }}</a><br>
+    {% else %}
+        pk: <a href="{% url 'blog:detail' article.pk %}">{{ article.pk }}</a><br>
+    {% endif %}
+    タイトル: {{ article.title }}<br>
+    本文: {{ article.body }}<br>
+    作成日: {{ article.created_at }}<br>
+<hr>
+{% endfor %}
+{% endblock %}
